@@ -4,7 +4,6 @@ $frameCount: 34;
 
 .animation{
   &__container{
-    background-color: red;
     width: 100vw;
     max-height: 100vh;
     overflow-y: auto;
@@ -26,7 +25,6 @@ $frameCount: 34;
     background-position: center;
     pointer-events: none;
     //animation: videoAnimation 2s infinite;
-    //animation-name: videoAnimation;
     animation-name: videoAnimation;
     animation-duration: 1ms;
     animation-timeline: --videoTimeline;
