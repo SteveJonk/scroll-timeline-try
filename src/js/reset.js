@@ -1,30 +1,29 @@
-function resetScrollOnElement() {
-    // Select the element with the class `animation__container`
+// Prepare for the ugliest code ever, but hey, it was a hackathon project.
+
+const resetScrollOnElement = () => {
     const scrollContainer = document.querySelector('.animation__container');
 
-    // Check if the element exists
     if (!scrollContainer) {
         console.error('Element with class "animation__container" not found.');
         return;
     }
 
-    // Add an event listener for the scroll event on the selected element
+    let lastScrollTop = 0
+
     scrollContainer.addEventListener('scroll', function() {
-        // Get the scroll position and dimensions of the element
         const scrollTop = scrollContainer.scrollTop;
         const scrollHeight = scrollContainer.scrollHeight;
         const containerHeight = scrollContainer.clientHeight;
-
-        // Check if the user is at the bottom of the element
-        if (scrollTop + containerHeight >= scrollHeight - 1) {
-            // Reset the scroll position to the top
-            scrollContainer.scrollTop = 0;
-            console.log('back to top')
+        const scrollDirection = scrollTop >= lastScrollTop ? 'down' : 'up';
+        lastScrollTop = scrollTop
+        if (scrollTop + containerHeight >= scrollHeight && scrollDirection === 'down') {
+            scrollContainer.scrollTop = 1;
+        } else if (scrollTop <= 0 && scrollDirection === 'up') {
+            scrollContainer.scrollTop = scrollHeight - containerHeight - 1;
         }
     });
 }
 
-// Call the function to activate the behavior
 document.addEventListener('DOMContentLoaded', function() {
     resetScrollOnElement();
 });
