@@ -1,15 +1,19 @@
 @use "sass:math";
 
+$frameCount: 34;
+
 .animation{
   &__container{
+    background-color: red;
     width: 100vw;
-    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    scroll-timeline: --videoTimeline y;
+    scroll-timeline: --videoTimeline vertical;
   }
   &__inner{
     width: 100%;
-    height: 34000vh;
-    scroll-timeline: --squareTimeline y;
-    scroll-timeline: --squareTimeline vertical;
+    height: #{$frameCount * 20}vh;
   }
   &__video{
     position: fixed;
@@ -20,11 +24,14 @@
     background-image: url('assets/frames/frame-1.jpg');
     background-size: cover;
     background-position: center;
-    animation: videoAnimation 2s infinite;
+    pointer-events: none;
+    //animation: videoAnimation 2s infinite;
+    //animation-name: videoAnimation;
+    animation-name: videoAnimation;
+    animation-duration: 1ms;
+    animation-timeline: --videoTimeline;
   }
 }
-
-$frameCount: 34;
 
 @keyframes videoAnimation {
   @for $i from 1 through $frameCount {
