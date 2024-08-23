@@ -1,24 +1,15 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import './style.scss'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+// Array of image file names
+const numFrames = 34;
+const imageFiles = Array.from({ length: numFrames }, (_, i) => `frame-${i + 1}.jpg`);
+console.log('env', import.meta.env.MODE)
+const folderPath = import.meta.env.MODE === 'development' ? '/src/assets/frames/' : '/assets/';
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+imageFiles.forEach(image => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = folderPath + image;
+    link.as = 'image';
+    document.head.appendChild(link);
+});
