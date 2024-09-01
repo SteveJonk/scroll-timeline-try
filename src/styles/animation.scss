@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$frameCount: 34;
+$frameCount: 147;
 
 .animation{
   &__container{
@@ -12,7 +12,7 @@ $frameCount: 34;
   }
   &__inner{
     width: 100%;
-    height: #{$frameCount * 20}vh;
+    height: #{$frameCount * 5}vh;
   }
   &__video{
     position: fixed;
@@ -20,8 +20,10 @@ $frameCount: 34;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('assets/frames/frame-1.jpg');
-    background-size: cover;
+    background-image: url('assets/frames2/frame-1.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
     background-position: center;
     pointer-events: none;
     //animation: videoAnimation 2s infinite;
@@ -34,7 +36,7 @@ $frameCount: 34;
 @keyframes videoAnimation {
   @for $i from 1 through $frameCount {
     #{math.div($i, $frameCount)*100}% {
-      background-image: url('assets/frames/frame-#{$i}.jpg');
+      background-image: url('assets/frames2/frame-#{$i}.jpg');
     }
   }
 }

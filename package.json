@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "downloadImages": "node ./scripts/downloadImages.cjs"
   },
   "devDependencies": {
     "typescript": "^5.5.3",

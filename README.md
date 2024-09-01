@@ -9,3 +9,4 @@ This project is a hands-on experiment with the CSS Scroll Timeline feature. It e
 - **Scroll-Based Animations**: Experiment with CSS animations that react to scrolling.
 - **Responsive Design**: Adjust animations based on scroll position for different viewport sizes.
 - **Modern CSS**: Utilize cutting-edge CSS features to create visually appealing effects.
+- Automated Script to download frames from a source
